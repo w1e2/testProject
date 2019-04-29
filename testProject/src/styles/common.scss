@@ -1,0 +1,182 @@
+/*@font-face{
+  font-family: myFont;
+  src: url('../assets/fonts/SourceHanSansCN-Normal_0.otf');
+}*/
+@import "./variables.scss";
+body {
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji",Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif!important;
+}
+.main{
+  .el-table{
+    margin-bottom: 18px;
+  }
+  .containter {
+    padding: 20px;
+  }
+}
+.el-input-group__append {
+  background-color: $primary-color !important;
+  border:1px solid #3a8ee6!important;
+}
+.append-button{
+  color: #fff!important;
+ /* background-color: #409EFF!important;
+  border-color: #409EFF!important;*/
+}
+.content-tit{
+  font-size: 14px !important;
+  color: #0a4a83 !important;
+  background-color:#e9f5ff !important;
+  padding:6px !important;
+  margin: 6px 0 !important;
+  line-height: 30px !important;
+  //border:none !important;
+  border: 1px solid #ebeef5;
+  >span{
+  	display: inline-block;
+    width: 15px;
+    height: 15px;
+    font-size: 14px;
+    line-height: 13px;
+    text-align: center;
+    border: 1px solid #ccc;
+    margin: 5px 5px 5px 0;
+    cursor: pointer;
+  }
+}
+.el-dialog__body{
+    padding: 1px 20px 10px 20px!important;
+
+  }
+.el-form-item {
+  margin-top: 9px;
+  margin-bottom: 9px!important;
+}
+.el-form-item__error{
+padding-top: 0px!important;
+}
+.but-con{
+  margin-top: 20px;
+  overflow: hidden;
+  text-align: right;
+}
+.mar15{
+  margin:15px auto;
+}
+.ali-right{
+  text-align: right;
+  margin-bottom: 9px;
+}
+.add-btn{
+  float: right;
+  margin-right: 10px;
+}
+.content-tips{
+  color:#f4a959;
+  font-size:14px;
+}
+.btn-green{
+  background-color:#33c2a3 !important;
+  border:1px solid #33c2a3 !important;
+}
+.btn-green:hover{
+  background-color:#47d0b2 !important;
+  border:1px solid #47d0b2 !important;
+}
+.btn-yellow{
+  background-color:#f4a959 !important;
+  border:1px solid #f4a959 !important;
+}
+.btn-yellow:hover{
+  background-color:#f6b978 !important;
+  border:1px solid #f6b978 !important;
+}
+.btn-red{
+  background-color:#ff5c5c !important;
+  border:1px solid #ff5c5c !important;
+}
+.btn-red:hover{
+  background-color:#fb7878 !important;
+  border:1px solid #fb7878 !important;
+}
+.el-message{
+  top: 10%;
+}
+.no-bord-textarea{
+  .el-textarea__inner{
+    border-color: #FFF!important;
+  }
+}
+.el-popover__reference {
+  //display: inline-block;
+  width: 850px;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+
+.hide{
+  display: none
+}
+
+.redItem .el-form-item__label{
+  color: red
+}
+.entry-main {
+  position:absolute;
+  top:0;
+  bottom:0;
+  right:0;
+  left:0;
+}
+.no-images {
+  width:100%;
+  height: calc(50vh - 40px);
+  overflow: auto;
+  border:1px solid #CECECE;
+  text-align: center;
+  padding-top: 20px;
+  font-size: 14px;
+}
+.containter {
+    overflow: hidden;
+    padding: 10px 20px 0;
+    position: relative;
+  }
+.containter-full-screen{
+  padding: 10px 10px 0;
+}
+.content-containter{
+  float: right;
+  width: 50%
+}
+.content {
+  padding: 10px 0px;
+}
+.content-yx {
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: calc(50vh - 30px);
+  box-sizing:border-box;
+  -moz-box-sizing:border-box; /* Firefox */
+  -webkit-box-sizing:border-box; /* Safari */
+}
+.content-yx-full {
+  height: calc(50vh - 30px);
+}
+.content-left-right {
+  height: calc(100vh - 60px);
+  overflow-x: auto;
+}
+.content-full-left-right {
+  height: 100vh;
+  overflow-x: auto;
+}
+/* 由于新单录入颜色特别多特别乱，将输入框的某些颜色重置 start*/
+.el-form-item.is-success .el-input__inner, .el-form-item.is-success .el-input__inner:focus, .el-form-item.is-success .el-textarea__inner, .el-form-item.is-success .el-textarea__inner:focus{
+  border-color: #dcdfe6 !important;
+}
+.el-form-item.is-error .el-input__inner, .el-form-item.is-error .el-input__inner:focus, .el-form-item.is-error .el-textarea__inner, .el-form-item.is-error .el-textarea__inner:focus{
+  border-color: #dcdfe6 !important;
+}
+/* 由于新单录入颜色特别多特别乱，将输入框的某些颜色重置 end*/

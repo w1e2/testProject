@@ -1,0 +1,163 @@
+ /**
+  * 该文件一般是重置element-ui中的样式
+  */
+ //to reset element-ui default css
+ .el-upload {
+  input[type="file"] {
+    display: none !important;
+  }
+}
+
+.el-upload__input {
+  display: none;
+}
+
+//暂时性解决diolag 问题 https://github.com/ElemeFE/element/issues/2461
+.el-dialog {
+  transform: none;
+  left: 0;
+  position: relative;
+  margin: 0 auto;
+}
+
+//element ui upload
+.upload-container {
+  .el-upload {
+    width: 100%;
+    .el-upload-dragger {
+      width: 100%;
+      height: 200px;
+    }
+  }
+}
+//重置breadcrumb-reset中.el-breadcrumb__separator的样式
+.breadcrumb-reset{
+  .el-breadcrumb__separator{
+    color:#fff;
+  }
+}
+// 重置.table-common中el-radio__label的样式
+.table-common{
+  .el-radio__label{
+    display: none;
+  }
+}
+// 重置checkbox中label的字体大小，目前体检录入里有使用
+.checkbox-label-reset{
+  .el-checkbox__label{
+    font-size: 12px;
+  }
+}
+// 重置textarea中字体的大小，目前体检录入里有使用
+.textarea-reset{
+  .el-textarea{
+    font-size: 12px;
+  }
+}
+// 重置表单中label的字体大小，目前体检录入里有使用
+.form-item-reset{
+  .el-form-item__label{
+    font-size: 12px;
+    font-weight:normal;
+  }
+}
+// 重置表格里的字体大小
+.el-table-reset{
+  .el-table{
+    font-size: 12px;
+  }
+}
+// 重置输入框边框、背景色、圆角
+.el-input__inner,.el-textarea__inner{
+    border: 1px solid #CECECE;
+    background-color: #fff;
+    border-radius: 3px;
+  }
+.el-input__inner:focus,el-textarea__inner:focus{
+  border: 1px solid #409EFF;
+}
+/**
+ * 解决表格错位问题
+ */
+body .el-table th.gutter{
+  display: table-cell!important;
+}
+/**
+ * 重置select、data table的样式
+ */
+.el-select {
+  display: inline-block;
+  position: relative;
+  width:100%;
+}
+.el-date-editor.el-input, .el-date-editor.el-input__inner {
+  width: 100%;
+}
+.el-table td, .el-table th.is-leaf {
+  background-color:#f8f8f8;
+}
+.el-table__body tr > td {
+  background-color: #fff;
+}
+.el-table--enable-row-hover .el-table__body tr:hover > td {
+  background-color: #f2f9fe;
+}
+/*针对人工核保列表页，表格变色的样式覆盖*/
+.el-table .bg01 {
+  background:#e6a23c;
+}
+.el-table .bg02 {
+  background: #33DEDB;
+}
+.el-table .bg03 {
+  background: #f56c6c;
+}
+.el-table .bg01, .el-table .bg02, .el-table .bg03{
+  color:#fff;
+}
+.el-table__body .bg01 > td, .el-table__body .bg02 > td, .el-table__body .bg03 > td{
+  background:none
+}
+.el-table__body .bg01:hover > td, .el-table__body .bg02:hover > td, .el-table__body .bg03:hover > td{
+  color:#606266
+}
+.el-table thead{
+  color: #666
+}
+.el-select .el-input .el-select__caret{
+  color: #666
+}
+.dateClick {
+  .el-input{
+    .el-input__inner {
+      padding: 0 25px;
+    }
+  }
+  .el-date-editor {
+    left:0;
+    top:0;
+    position: absolute;
+    width: 25px;
+    height: 32px;
+    input {
+      display: none;
+    }
+    .el-input__inner{
+      border:none
+    }
+    .el-form-item.is-error .el-input__inner, .el-form-item.is-error .el-input__inner:focus, .el-form-item.is-error .el-textarea__inner, .el-form-item.is-error .el-textarea__inner:focus{
+      border-color:none;
+    }
+    .el-input__prefix{
+      left:0;
+    }
+    .el-form-item.is-success .el-input__inner, .el-form-item.is-success .el-input__inner:focus, .el-form-item.is-success .el-textarea__inner, .el-form-item.is-success .el-textarea__inner:focus{
+      border:none;
+    }
+    .el-icon--circle-close {
+      visibility: hidden;
+      background: none;
+    }
+  }
+}
+
