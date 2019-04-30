@@ -1,16 +1,23 @@
 <template>
+<!--  首页-->
   <div>
     <el-main>
       <h2 style="color: #0090d2">Welcome to the test world   !!!!!!!</h2>
 <!--      <pedorapply></pedorapply>-->
+<!--      <perservationApplyInfo></perservationApplyInfo>-->
+      <manualUnderwriting></manualUnderwriting>
     </el-main>
   </div>
 </template>
 <script>
   import pedorapply from '@/views/preservationManage/component/pedorapply-accept'
+  import perservationApplyInfo from '@/views/preservationManage/preservation-applyInfo'
+  import manualUnderwriting from '@/views/preservationManage/manual-underwriting'
 export default {
   components: {
-    pedorapply
+    pedorapply,
+    perservationApplyInfo,
+    manualUnderwriting
   },
   data() {
     return {

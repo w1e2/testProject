@@ -1,4 +1,5 @@
 <template>
+<!--  保全受理信息-->
   <div>
     <el-main>
       <p class="content-tit">
@@ -35,7 +36,7 @@
         <el-row type="flex" class="row-bg">
           <el-col :span="7">
             <el-form-item  label="批改状态" size="small">
-              <el-input v-model="formData.applyPerson" maxlength="15" placeholder="请输入投保单号" size='small'></el-input>
+              <el-input v-model="formData.applyPerson" maxlength="15" placeholder="请输入批改状态" size='small'></el-input>
             </el-form-item>
           </el-col>
           <el-col :span="7" :offset="1">
@@ -53,24 +54,24 @@
           </el-col>
           <el-col :span="7" :offset="1">
             <el-form-item  label="申请资格人" size="small">
-              <el-input v-model="formData.applyPerson" maxlength="15" placeholder="请输入投保单号" size='small'></el-input>
+              <el-input v-model="formData.applyPerson" maxlength="15" placeholder="请输入申请资格人" size='small'></el-input>
             </el-form-item>
           </el-col>
         </el-row>
         <el-row>
           <el-col :span="7" >
             <el-form-item  label="申请资格人联系电话" size="small">
-              <el-input v-model="formData.applyPerson" maxlength="15" placeholder="请输入投保单号" size='small'></el-input>
+              <el-input v-model="formData.applyPerson" maxlength="15" placeholder="请输入申请资格人联系电话" size='small'></el-input>
             </el-form-item>
           </el-col>
           <el-col :span="7" :offset="1">
             <el-form-item  label="申请资格人联系地址" size="small">
-              <el-input v-model="formData.applyPerson" maxlength="15" placeholder="请输入投保单号" size='small'></el-input>
+              <el-input v-model="formData.applyPerson" maxlength="15" placeholder="请输入申请资格人联系地址" size='small'></el-input>
             </el-form-item>
           </el-col>
           <el-col :span="7" :offset="1">
             <el-form-item  label="邮编" size="small">
-              <el-input v-model="formData.applyPerson" maxlength="15" placeholder="请输入投保单号" size='small'></el-input>
+              <el-input v-model="formData.applyPerson" maxlength="15" placeholder="请输入邮编" size='small'></el-input>
             </el-form-item>
           </el-col>
         </el-row>
@@ -97,7 +98,7 @@
         <el-row type="flex" class="row-bg">
           <el-col :span="7">
             <el-form-item  label="保单号/客户号" size="small">
-              <el-input v-model="formData.prtNo" maxlength="15" placeholder="请输入投保单号" size='small'></el-input>
+              <el-input v-model="formData.prtNo" maxlength="15" placeholder="请输入投保单号/客户号" size='small'></el-input>
             </el-form-item>
           </el-col>
           <el-col :span="7" :offset="1">
@@ -115,34 +116,34 @@
         <el-row type="flex" class="row-bg">
           <el-col :span="7">
             <el-form-item  label="投保人" size="small">
-              <el-input v-model="formData.applyPerson" maxlength="15" placeholder="请输入投保单号" size='small'></el-input>
+              <el-input v-model="formData.applyPerson" maxlength="15" placeholder="请输入投保人" size='small'></el-input>
             </el-form-item>
           </el-col>
           <el-col :span="7" :offset="1">
             <el-form-item  label="主被保人" size="small">
-              <el-input v-model="formData.applyPerson" maxlength="15" placeholder="请输入投保单号" size='small'></el-input>
+              <el-input v-model="formData.applyPerson" maxlength="15" placeholder="请输入主被保人" size='small'></el-input>
             </el-form-item>
           </el-col>
           <el-col :span="7" :offset="1">
             <el-form-item  label="业务员" size="small">
-              <el-input v-model="formData.applyPerson" maxlength="15" placeholder="请输入投保单号" size='small'></el-input>
+              <el-input v-model="formData.applyPerson" maxlength="15" placeholder="请输入业务员" size='small'></el-input>
             </el-form-item>
           </el-col>
         </el-row>
         <el-row>
           <el-col :span="7">
             <el-form-item  label="申请资格人联系电话" size="small">
-              <el-input v-model="formData.applyPerson" maxlength="15" placeholder="请输入投保单号" size='small'></el-input>
+              <el-input v-model="formData.applyPerson" maxlength="15" placeholder="请输入申请资格人联系电话" size='small'></el-input>
             </el-form-item>
           </el-col>
           <el-col :span="7" :offset="1">
             <el-form-item  label="申请资格人联系地址" size="small">
-              <el-input v-model="formData.applyPerson" maxlength="15" placeholder="请输入投保单号" size='small'></el-input>
+              <el-input v-model="formData.applyPerson" maxlength="15" placeholder="请输入申请资格人联系地址" size='small'></el-input>
             </el-form-item>
           </el-col>
           <el-col :span="7" :offset="1">
             <el-form-item  label="邮编" size="small">
-              <el-input v-model="formData.applyPerson" maxlength="15" placeholder="请输入投保单号" size='small'></el-input>
+              <el-input v-model="formData.applyPerson" maxlength="15" placeholder="请输入邮编" size='small'></el-input>
             </el-form-item>
           </el-col>
         </el-row>
@@ -251,12 +252,26 @@
         <el-row type="flex" class="row-bg">
           <el-col :span="7">
             <el-form-item  label="批改类型" size="small">
-              <el-input v-model="formData.prtNo" maxlength="15" placeholder="请输入投保单号" size='small'></el-input>
+              <el-select v-model="formData.numberType" placeholder="请选择">
+                <el-option
+                  v-for="item in managementAgency"
+                  :key="item.code"
+                  :label="item.codeName"
+                  :value="item.code">
+                  <span>{{ item.code }}</span> - <span>{{ item.codeName }}</span>
+                </el-option>
+              </el-select>
             </el-form-item>
           </el-col>
           <el-col :span="7" :offset="1">
             <el-form-item  label="柜面受理日期" size="small">
-              <el-input v-model="formData.prtNo" maxlength="15" placeholder="请输入投保单号" size='small'></el-input>
+              <el-date-picker
+                v-model="formData.inputDate"
+                type="date"
+                placeholder="选择日期"
+                :format="'yyyy-MM-dd'"
+                :value-format="'yyyy-MM-dd'">
+              </el-date-picker>
             </el-form-item>
           </el-col>
           <el-col :span="7" :offset="1">
@@ -268,17 +283,37 @@
         <el-row type="flex" class="row-bg">
           <el-col :span="7">
             <el-form-item  label="申请原因" size="small">
-              <el-input v-model="formData.applyPerson" maxlength="15" placeholder="请输入投保单号" size='small'></el-input>
+              <el-select v-model="formData.numberType" placeholder="请选择">
+                <el-option
+                  v-for="item in managementAgency"
+                  :key="item.code"
+                  :label="item.codeName"
+                  :value="item.code">
+                  <span>{{ item.code }}</span> - <span>{{ item.codeName }}</span>
+                </el-option>
+              </el-select>
             </el-form-item>
           </el-col>
           <el-col :span="7" :offset="1">
             <el-form-item  label="生效日期" size="small">
-              <el-input v-model="formData.applyPerson" maxlength="15" placeholder="请输入投保单号" size='small'></el-input>
+              <el-date-picker
+                v-model="formData.inputDate"
+                type="date"
+                placeholder="选择日期"
+                :format="'yyyy-MM-dd'"
+                :value-format="'yyyy-MM-dd'">
+              </el-date-picker>
             </el-form-item>
           </el-col>
           <el-col :span="7" :offset="1">
             <el-form-item  label="系统操作日期" size="small">
-              <el-input v-model="formData.applyPerson" maxlength="15" placeholder="请输入投保单号" size='small'></el-input>
+              <el-date-picker
+                v-model="formData.inputDate"
+                type="date"
+                placeholder="选择日期"
+                :format="'yyyy-MM-dd'"
+                :value-format="'yyyy-MM-dd'">
+              </el-date-picker>
             </el-form-item>
           </el-col>
         </el-row>
@@ -320,41 +355,73 @@
         <el-row type="flex" class="row-bg">
           <el-col :span="7">
             <el-form-item  label="收付费方式" size="small">
-              <el-input v-model="formData.prtNo" maxlength="15" placeholder="请输入投保单号" size='small'></el-input>
+              <el-select v-model="formData.numberType" placeholder="请选择">
+                <el-option
+                  v-for="item in managementAgency"
+                  :key="item.code"
+                  :label="item.codeName"
+                  :value="item.code">
+                  <span>{{ item.code }}</span> - <span>{{ item.codeName }}</span>
+                </el-option>
+              </el-select>
             </el-form-item>
           </el-col>
           <el-col :span="7" :offset="1">
             <el-form-item  label="开户行所在省" size="small">
-              <el-input v-model="formData.prtNo" maxlength="15" placeholder="请输入投保单号" size='small'></el-input>
+              <el-select v-model="formData.numberType" placeholder="请选择">
+                <el-option
+                  v-for="item in managementAgency"
+                  :key="item.code"
+                  :label="item.codeName"
+                  :value="item.code">
+                  <span>{{ item.code }}</span> - <span>{{ item.codeName }}</span>
+                </el-option>
+              </el-select>
             </el-form-item>
           </el-col>
           <el-col :span="7" :offset="1">
             <el-form-item  label="银行区域" size="small">
-              <el-input v-model="formData.prtNo" maxlength="15" placeholder="请输入投保单号" size='small'></el-input>
+              <el-select v-model="formData.numberType" placeholder="请选择">
+                <el-option
+                  v-for="item in managementAgency"
+                  :key="item.code"
+                  :label="item.codeName"
+                  :value="item.code">
+                  <span>{{ item.code }}</span> - <span>{{ item.codeName }}</span>
+                </el-option>
+              </el-select>
             </el-form-item>
           </el-col>
         </el-row>
         <el-row type="flex" class="row-bg">
           <el-col :span="7">
             <el-form-item  label="银行行号" size="small">
-              <el-input v-model="formData.applyPerson" maxlength="15" placeholder="请输入投保单号" size='small'></el-input>
+              <el-input v-model="formData.applyPerson" maxlength="15" placeholder="请输入银行行号" size='small'></el-input>
             </el-form-item>
           </el-col>
           <el-col :span="7" :offset="1">
             <el-form-item  label="开户银行" size="small">
-              <el-input v-model="formData.applyPerson" maxlength="15" placeholder="请输入投保单号" size='small'></el-input>
+              <el-select v-model="formData.numberType" placeholder="请选择">
+                <el-option
+                  v-for="item in managementAgency"
+                  :key="item.code"
+                  :label="item.codeName"
+                  :value="item.code">
+                  <span>{{ item.code }}</span> - <span>{{ item.codeName }}</span>
+                </el-option>
+              </el-select>
             </el-form-item>
           </el-col>
           <el-col :span="7" :offset="1">
             <el-form-item  label="银行账户" size="small">
-              <el-input v-model="formData.applyPerson" maxlength="15" placeholder="请输入投保单号" size='small'></el-input>
+              <el-input v-model="formData.applyPerson" maxlength="15" placeholder="请输入银行账户" size='small'></el-input>
             </el-form-item>
           </el-col>
         </el-row>
         <el-row>
           <el-col :span="7" >
             <el-form-item  label="户名" size="small">
-              <el-input v-model="formData.applyPerson" maxlength="15" placeholder="请输入投保单号" size='small'></el-input>
+              <el-input v-model="formData.applyPerson" maxlength="15" placeholder="请输入户名" size='small'></el-input>
             </el-form-item>
           </el-col>
         </el-row>

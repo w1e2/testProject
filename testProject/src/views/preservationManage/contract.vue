@@ -1,4 +1,5 @@
 <template>
+<!--  无扫描申请页面-->
   <div>
     <el-main>
       <p class='content-tit'>请输入查询条件:</p>
