@@ -2,7 +2,9 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Dashboard from '@/components/Dashboard'
 import Main from '@/components/Main'
+import Login from '@/components/Login'
 import cardAndUsersQuery from '@/views/cardAndUsersManage/cardAndUsersQuery'
+import cardAndUsersAdd from '@/views/cardAndUsersManage/cardAndUsersAdd'
 import contract from '@/views/preservationManage/contract'
 import underwriting from '@/views/preservationManage/underwriting-auto'
 import underwritingPersonal from '@/views/preservationManage/underwriting-personal'
@@ -14,11 +16,19 @@ let routes = [
     path:'/',
     component: Main,
     hidden: true,
-    children: [{
+    children: [
+      {
         path: '/',
         component:Dashboard,
         name:'首页'
-    }]
+    }
+    ]
+  },
+  {
+    path: '/login',
+    component: Login,
+    name: '',
+    hidden: true
   },
   {
     path: '/cardAndUsersManage',
@@ -29,6 +39,11 @@ let routes = [
         path: '/cardAndUsersQuery',
         component: cardAndUsersQuery,
         name: '卡/用户查询'
+      },
+      {
+        path: '/cardAndUsersAdd',
+        component: cardAndUsersAdd,
+        name: '卡/用户录入'
       }
     ]
   },

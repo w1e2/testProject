@@ -23,7 +23,7 @@
                         <el-dropdown-item>
                             <a >修改密码</a>
                         </el-dropdown-item>
-                        <el-dropdown-item >
+                        <el-dropdown-item divided @click.native="logout">
                             注销登录
                         </el-dropdown-item>
                     </el-dropdown-menu>
@@ -131,7 +131,21 @@ export default {
       this.$refs.menuCollapsed.getElementsByClassName(
         "submenu-hook-" + i
       )[0].style.display = status ? "block" : "none";
-    }
+    },
+    //退出登录
+    logout: function () {
+      var _this = this;
+      this.$confirm('确认退出吗?', '提示', {
+        //type: 'warning'
+      }).then(() => {
+        sessionStorage.removeItem('user');
+        _this.$router.push('/login');
+      }).catch(() => {
+
+      });
+
+
+    },
   },
   mounted: function() {
     this.initMenu();

@@ -5,7 +5,7 @@
       <h2 style="color: #0090d2">Welcome to the test world   !!!!!!!</h2>
 <!--      <pedorapply></pedorapply>-->
 <!--      <perservationApplyInfo></perservationApplyInfo>-->
-      <manualUnderwriting></manualUnderwriting>
+<!--      <manualUnderwriting></manualUnderwriting>-->
     </el-main>
   </div>
 </template>
