@@ -11,7 +11,6 @@ import headTop from '../../components/head-top';
 export default {
   components: { leftMenu ,headTop },
   created(){
-    // this.input = this.$t("lang.homeOverview") // 必须得是双引号
     console.log("enter homePage ")
   },
   methods:{
@@ -34,5 +33,5 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  
+
 </style>

@@ -33,7 +33,7 @@
         <el-col :span="24" class="main">
             <aside :class="collapsed?'menu-collapsed':'menu-expanded'">
                 <!--导航菜单-->
-                <el-menu background-color="#545c64" text-color="#fff" active-text-color="#ffd04b" v-bind:style=" collapsed ? {} : { 'width': '230px' } " :default-active="$route.path" class="el-menu-vertical-demo" unique-opened router v-show="!collapsed">
+                <el-menu background-color="#D88E08" text-color="#fff" active-text-color="#0886D8" v-bind:style=" collapsed ? {} : { 'width': '230px' } " :default-active="$route.path" class="el-menu-vertical-demo" unique-opened router v-show="!collapsed">
                     <template v-for="(item,index) in menuData" v-if="!item.hidden">
                         <el-submenu :index="index+''" v-if="!item.leaf" >
                             <template slot="title">
@@ -148,7 +148,7 @@ export default {
   .header {
     height: 60px;
     line-height: 60px;
-    background: #545c64;
+    background: #D88E08;
     color: #fff;
     .userinfo {
       text-align: right;

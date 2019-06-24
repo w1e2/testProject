@@ -11,7 +11,7 @@
             </el-menu>
           </div>
       </el-col>
-      /* <el-col :span="5">
+      <el-col :span="5">
         <div class="tools">
           <div class="portrait-div">
             <!-- <img src="../assets/logo.png" /> -->
@@ -21,7 +21,7 @@
               <p>你好，欢迎登录</p>
             </div>
         </div>
-      </el-col> */
+      </el-col>
       <!-- <el-col :span="3" class="userinfo" divided>
        <div @click="logout">安全退出</div>
       </el-col> -->

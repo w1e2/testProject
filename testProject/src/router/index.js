@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Dashboard from '@/components/Dashboard'
 import Main from '@/components/Main'
-import preservation from '@/views/preservationManage/preservation-apply'
+import cardAndUsersQuery from '@/views/cardAndUsersManage/cardAndUsersQuery'
 import contract from '@/views/preservationManage/contract'
 import underwriting from '@/views/preservationManage/underwriting-auto'
 import underwritingPersonal from '@/views/preservationManage/underwriting-personal'
@@ -21,29 +21,98 @@ let routes = [
     }]
   },
   {
+    path: '/cardAndUsersManage',
+    name: '卡/用户管理',
+    component: Main,
+    children: [
+      {
+        path: '/cardAndUsersQuery',
+        component: cardAndUsersQuery,
+        name: '卡/用户查询'
+      }
+    ]
+  },
+  {
     path: '/perservationManage',
-    name: '保全管理',
+    name: '本方银行',
     component: Main,
     children: [
       {
         path: '/contract',
         component: contract,
         name: '无扫描申请'
-      },
+      }
+    ]
+  },
+  {
+    path: '/perservationManage',
+    name: '卡/用户管理',
+    component: Main,
+    children: [
       {
-        path: '/preservation-apply',
-        component: preservation,
-        name: '保全申请'
-      },
+        path: '/contract',
+        component: contract,
+        name: '无扫描申请'
+      }
+    ]
+  },
+  {
+    path: '/perservationManage',
+    name: '规则配置',
+    component: Main,
+    children: [
       {
-        path: '/underwriting-auto',
-        component: underwriting,
-        name: '自动核保'
-      },
+        path: '/contract',
+        component: contract,
+        name: '无扫描申请'
+      }
+    ]
+  },
+  {
+    path: '/perservationManage',
+    name: '日常财务操作',
+    component: Main,
+    children: [
       {
-        path: '/underwriting-personal',
-        component: underwritingPersonal ,
-        name: '人工核保'
+        path: '/contract',
+        component: contract,
+        name: '无扫描申请'
+      }
+    ]
+  },
+  {
+    path: '/perservationManage',
+    name: '日常操作',
+    component: Main,
+    children: [
+      {
+        path: '/contract',
+        component: contract,
+        name: '无扫描申请'
+      }
+    ]
+  },
+  {
+    path: '/perservationManage',
+    name: '客户还款记录',
+    component: Main,
+    children: [
+      {
+        path: '/contract',
+        component: contract,
+        name: '无扫描申请'
+      }
+    ]
+  },
+  {
+    path: '/perservationManage',
+    name: '客户还款查询',
+    component: Main,
+    children: [
+      {
+        path: '/contract',
+        component: contract,
+        name: '无扫描申请'
       }
     ]
   }
