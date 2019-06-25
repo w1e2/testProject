@@ -36,30 +36,30 @@
             <el-input v-model="formData.cardNum" maxlength="15" placeholder="请输入卡号" size='small'></el-input>
           </el-form-item>
         </el-col>
-<!--        <el-col :span="8">-->
-<!--          <el-form-item  label="申请方式" size="small">-->
-<!--            <el-select v-model="formData.applyType" placeholder="请选择">-->
-<!--              <el-option-->
-<!--                v-for="item in managementAgency"-->
-<!--                :key="item.code"-->
-<!--                :label="item.codeName"-->
-<!--                :value="item.code">-->
-<!--                <span>{{ item.code }}</span> - <span>{{ item.codeName }}</span>-->
-<!--              </el-option>-->
-<!--            </el-select>-->
-<!--          </el-form-item>-->
-<!--        </el-col>-->
-<!--        <el-col :span="8">-->
-<!--          <el-form-item  label="录入日期" size="small">-->
-<!--            <el-date-picker-->
-<!--              v-model="formData.inputDate"-->
-<!--              type="date"-->
-<!--              placeholder="选择日期"-->
-<!--              :format="'yyyy-MM-dd'"-->
-<!--              :value-format="'yyyy-MM-dd'">-->
-<!--            </el-date-picker>-->
-<!--          </el-form-item>-->
-<!--        </el-col>-->
+        <!--        <el-col :span="8">-->
+        <!--          <el-form-item  label="申请方式" size="small">-->
+        <!--            <el-select v-model="formData.applyType" placeholder="请选择">-->
+        <!--              <el-option-->
+        <!--                v-for="item in managementAgency"-->
+        <!--                :key="item.code"-->
+        <!--                :label="item.codeName"-->
+        <!--                :value="item.code">-->
+        <!--                <span>{{ item.code }}</span> - <span>{{ item.codeName }}</span>-->
+        <!--              </el-option>-->
+        <!--            </el-select>-->
+        <!--          </el-form-item>-->
+        <!--        </el-col>-->
+        <!--        <el-col :span="8">-->
+        <!--          <el-form-item  label="录入日期" size="small">-->
+        <!--            <el-date-picker-->
+        <!--              v-model="formData.inputDate"-->
+        <!--              type="date"-->
+        <!--              placeholder="选择日期"-->
+        <!--              :format="'yyyy-MM-dd'"-->
+        <!--              :value-format="'yyyy-MM-dd'">-->
+        <!--            </el-date-picker>-->
+        <!--          </el-form-item>-->
+        <!--        </el-col>-->
       </el-row>
       <div class="ali-right" v-if="searchFlag">
         <el-button type="primary" size="small" @click="queryClick('formDatas')">查询</el-button>
@@ -70,7 +70,7 @@
       <span @click="isShow('flag')" v-else>+</span>
       查询结果
     </p>
-    <el-table :data="selfList" style="width: 100%" class='table-common' :highlight-current-row="true" border>
+    <el-table :data="selfList" style="width: 100%" class='table-common' :highlight-current-row="true" border v-if="isShowSingle">
       <el-table-column label="序号" type='index' width="60" align="center"></el-table-column>
       <el-table-column prop="missionprop1" label="保单受理号" min-width="15%" align="center"></el-table-column>
       <el-table-column prop="missionprop2" label="客户/保单号" min-width="15%" align="center"></el-table-column>
@@ -87,12 +87,12 @@
       <el-table-column label="操作" min-width="15%" align="center">
       </el-table-column>
     </el-table>
-<!--    <el-button type="primary" size="mini" @click="goToBusiDeal()">-->
-<!--      保全受理-->
-<!--    </el-button>-->
-<!--    <el-button type="primary" size="mini" @click="showNotePad()">-->
-<!--      记事本查看-->
-<!--    </el-button>-->
+    <!--    <el-button type="primary" size="mini" @click="goToBusiDeal()">-->
+    <!--      保全受理-->
+    <!--    </el-button>-->
+    <!--    <el-button type="primary" size="mini" @click="showNotePad()">-->
+    <!--      记事本查看-->
+    <!--    </el-button>-->
     <div class="mar15 ali-right">
       <el-pagination
         @current-change="handleCurrentChangeSingle"
@@ -119,15 +119,7 @@
           telephone: "",// 电话号码
           cardNum: "",// 卡号
           pageNum:1
-        },
-        selfPage: {
-          currentPage: 1,
-          hasMore: true,
-          perPage: 10,
-          totalPage: 0,
-          totalSize: 0
-        },
-        selfList: []
+        }
       };
     },
     methods: {
@@ -152,5 +144,4 @@
   }
 </script>
 <style scoped>
-
 </style>

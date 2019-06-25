@@ -5,10 +5,15 @@ import Main from '@/components/Main'
 import Login from '@/components/Login'
 import cardAndUsersQuery from '@/views/cardAndUsersManage/cardAndUsersQuery'
 import cardAndUsersAdd from '@/views/cardAndUsersManage/cardAndUsersAdd'
-import contract from '@/views/preservationManage/contract'
-import underwriting from '@/views/preservationManage/underwriting-auto'
-import underwritingPersonal from '@/views/preservationManage/underwriting-personal'
-import pedorapplyAccept from '@/views/preservationManage/component/pedorapply-accept'
+import posQuery from '@/views/posManage/posQuery'
+import posAdd from '@/views/posManage/posAdd'
+import bankQuery from '@/views/bankManage/bankQuery'
+import ruleQuery from '@/views/ruleManage/ruleQuery'
+import ruleAdd from '@/views/ruleManage/ruleAdd'
+import dailyFinancialQuery from '@/views/dailyFinancialManage/dailyFinancialQuery'
+import clientRepaymentQuery from '@/views/clientRepayment/clientRepaymentQuery'
+import dailyOperationQuery from '@/views/dailyOperation/dailyOperationQuery'
+import dailyOperationUpdate from '@/views/dailyOperation/dailyOperationUpdate'
 
 Vue.use(Router)
 let routes = [
@@ -48,62 +53,77 @@ let routes = [
     ]
   },
   {
-    path: '/perservationManage',
+    path: '/posManage',
+    name: 'POS机管理',
+    component: Main,
+    children: [
+      {
+        path: '/posQuery',
+        component: posQuery,
+        name: 'pos机查询'
+      },
+      {
+        path: '/posAdd',
+        component: posAdd,
+        name: 'pos机录入'
+      }
+    ]
+  },
+  {
+    path: '/bankManage',
     name: '本方银行',
     component: Main,
     children: [
       {
-        path: '/contract',
-        component: contract,
-        name: '无扫描申请'
+        path: '/bankQuery',
+        component: bankQuery,
+        name: '本方银行查询'
       }
     ]
   },
   {
-    path: '/perservationManage',
-    name: '卡/用户管理',
-    component: Main,
-    children: [
-      {
-        path: '/contract',
-        component: contract,
-        name: '无扫描申请'
-      }
-    ]
-  },
-  {
-    path: '/perservationManage',
+    path: '/ruleManage',
     name: '规则配置',
     component: Main,
     children: [
       {
-        path: '/contract',
-        component: contract,
-        name: '无扫描申请'
+        path: '/ruleAdd',
+        component: ruleAdd,
+        name: '规则配置'
+      },
+      {
+        path: '/ruleQuery',
+        component: ruleQuery,
+        name: '规则查询'
       }
     ]
   },
   {
-    path: '/perservationManage',
+    path: '/dailyFinancialManage',
     name: '日常财务操作',
     component: Main,
     children: [
       {
-        path: '/contract',
-        component: contract,
-        name: '无扫描申请'
+        path: '/dailyFinancialQuery ',
+        component: dailyFinancialQuery,
+        name: '日常财务操作查询'
       }
     ]
   },
   {
-    path: '/perservationManage',
+    path: '/dailyOperation',
     name: '日常操作',
     component: Main,
     children: [
       {
-        path: '/contract',
-        component: contract,
-        name: '无扫描申请'
+        path: '/dailyOperationQuery',
+        component: dailyOperationQuery,
+        name: '日常操作查询'
+      },
+      {
+        path: '/dailyOperationUpdate',
+        component: dailyOperationUpdate,
+        name: '日常操作修改'
       }
     ]
   },
@@ -114,20 +134,20 @@ let routes = [
     children: [
       {
         path: '/contract',
-        component: contract,
-        name: '无扫描申请'
+        component: cardAndUsersQuery,
+        name: '客户还款记录'
       }
     ]
   },
   {
-    path: '/perservationManage',
+    path: '/clientRepayment',
     name: '客户还款查询',
     component: Main,
     children: [
       {
-        path: '/contract',
-        component: contract,
-        name: '无扫描申请'
+        path: '/clientRepaymentQuery',
+        component: clientRepaymentQuery,
+        name: '客户还款查询'
       }
     ]
   }
