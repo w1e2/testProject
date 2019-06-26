@@ -6,6 +6,7 @@
 <!--      <pedorapply></pedorapply>-->
 <!--      <perservationApplyInfo></perservationApplyInfo>-->
 <!--      <manualUnderwriting></manualUnderwriting>-->
+      <salesmanCodind @silkFuna="silkFuna"></salesmanCodind>
     </el-main>
   </div>
 </template>
@@ -13,11 +14,13 @@
   import pedorapply from '@/views/preservationManage/component/pedorapply-accept'
   import perservationApplyInfo from '@/views/preservationManage/preservation-applyInfo'
   import manualUnderwriting from '@/views/preservationManage/manual-underwriting'
+  import salesmanCodind from '@/components/salesman-coding'
 export default {
   components: {
     pedorapply,
     perservationApplyInfo,
-    manualUnderwriting
+    manualUnderwriting,
+    salesmanCodind
   },
   data() {
     return {
@@ -43,6 +46,10 @@ export default {
     };
   },
   methods: {
+    silkFuna(val) { // 业务员代码
+      // this.formData.salesmanCode = val.agentCode
+      // this.show = val.isShowPages
+    },
   }
 }
 </script>
