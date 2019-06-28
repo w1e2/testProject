@@ -4,7 +4,7 @@
     <p class='content-tit'>请输入查询条件:</p>
     <el-form :model="formData" ref="formData" label-width="100px" class="demo-ruleForm" label-position="right">
       <el-row type="flex" class="row-bg">
-        <el-col :span="8">
+        <el-col :span="7">
           <el-form-item  label="查询类型" size="small">
             <el-select v-model="formData.queryType" placeholder="请选择" @change="checkType()">
               <el-option
@@ -17,49 +17,21 @@
             </el-select>
           </el-form-item>
         </el-col>
-      </el-row>
-      <el-row type="flex" class="row-bg" v-if="searchFlag && formData.queryType !== '2'">
-        <el-col :span="8">
+        <el-col :span="7" :offset="1" v-if="searchFlag && formData.queryType !== '2'">
           <el-form-item  label="姓名" size="small">
             <el-input v-model="formData.name" maxlength="15" placeholder="请输入姓名" size='small'></el-input>
           </el-form-item>
         </el-col>
-        <el-col :span="8">
+        <el-col :span="7" :offset="1" v-if="searchFlag && formData.queryType !== '2'">
           <el-form-item  label="电话号码" size="small">
             <el-input v-model="formData.telephone" maxlength="15" placeholder="请输入电话号码" size='small'></el-input>
           </el-form-item>
         </el-col>
-      </el-row>
-      <el-row type="flex" class="row-bg" v-if="searchFlag && formData.queryType === '2'">
-        <el-col :span="8">
+        <el-col :span="7" v-if="searchFlag && formData.queryType === '2'">
           <el-form-item  label="卡号" size="small">
             <el-input v-model="formData.cardNum" maxlength="15" placeholder="请输入卡号" size='small'></el-input>
           </el-form-item>
         </el-col>
-<!--        <el-col :span="8">-->
-<!--          <el-form-item  label="申请方式" size="small">-->
-<!--            <el-select v-model="formData.applyType" placeholder="请选择">-->
-<!--              <el-option-->
-<!--                v-for="item in managementAgency"-->
-<!--                :key="item.code"-->
-<!--                :label="item.codeName"-->
-<!--                :value="item.code">-->
-<!--                <span>{{ item.code }}</span> - <span>{{ item.codeName }}</span>-->
-<!--              </el-option>-->
-<!--            </el-select>-->
-<!--          </el-form-item>-->
-<!--        </el-col>-->
-<!--        <el-col :span="8">-->
-<!--          <el-form-item  label="录入日期" size="small">-->
-<!--            <el-date-picker-->
-<!--              v-model="formData.inputDate"-->
-<!--              type="date"-->
-<!--              placeholder="选择日期"-->
-<!--              :format="'yyyy-MM-dd'"-->
-<!--              :value-format="'yyyy-MM-dd'">-->
-<!--            </el-date-picker>-->
-<!--          </el-form-item>-->
-<!--        </el-col>-->
       </el-row>
       <div class="ali-right" v-if="searchFlag">
         <el-button type="primary" size="small" @click="queryClick('formDatas')">查询</el-button>
@@ -72,20 +44,18 @@
     </p>
     <el-table :data="selfList" style="width: 100%" class='table-common' :highlight-current-row="true" border>
       <el-table-column label="序号" type='index' width="60" align="center"></el-table-column>
-      <el-table-column prop="missionprop1" label="保单受理号" min-width="15%" align="center"></el-table-column>
-      <el-table-column prop="missionprop2" label="客户/保单号" min-width="15%" align="center"></el-table-column>
-      <el-table-column prop="missionprop3" label="号码类型" min-width="15%" align="center"></el-table-column>
-      <el-table-column prop="missionprop4" label="投保人" min-width="15%" align="center"></el-table-column>
-      <el-table-column prop="missionprop5" label="下次交费对应日" min-width="15%" align="center"></el-table-column>
-      <el-table-column prop="missionprop6" label="申请方式" min-width="15%" align="center"></el-table-column>
-      <el-table-column prop="missionprop7" label="管理机构" min-width="15%" align="center"></el-table-column>
-      <el-table-column prop="missionprop8" label="录入员" min-width="15%" align="center"></el-table-column>
-      <el-table-column prop="missionprop9" label="录入日期" min-width="15%" align="center"></el-table-column>
-      <el-table-column prop="missionprop3" label="保全操作" min-width="15%" align="center"></el-table-column>
-      <el-table-column prop="missionprop3" label="受理日期" min-width="15%" align="center"></el-table-column>
-      <el-table-column prop="missionprop4" label="超过日期" min-width="15%" align="center"></el-table-column>
-      <el-table-column label="操作" min-width="15%" align="center">
-      </el-table-column>
+      <el-table-column prop="missionprop1" label="持卡人姓名" min-width="15%" align="center"></el-table-column>
+      <el-table-column prop="missionprop2" label="持卡人电话号码" min-width="15%" align="center"></el-table-column>
+      <el-table-column prop="missionprop2" label="送卡人姓名" min-width="15%" align="center"></el-table-column>
+      <el-table-column prop="missionprop2" label="送卡人电话号码" min-width="15%" align="center"></el-table-column>
+      <el-table-column prop="missionprop1" label="信用卡号" min-width="15%" align="center"></el-table-column>
+      <el-table-column prop="missionprop2" label="欠款总金额" min-width="15%" align="center"></el-table-column>
+      <el-table-column prop="missionprop2" label="卡上余额" min-width="15%" align="center"></el-table-column>
+      <el-table-column prop="missionprop2" label="账单日期" min-width="15%" align="center"></el-table-column>
+      <el-table-column prop="missionprop1" label="最后还款日" min-width="15%" align="center"></el-table-column>
+      <el-table-column prop="missionprop2" label="是否为风险卡" min-width="15%" align="center"></el-table-column>
+      <el-table-column prop="missionprop2" label="卡状态" min-width="15%" align="center"></el-table-column>
+      <el-table-column prop="missionprop2" label="收费比例" min-width="15%" align="center"></el-table-column>
     </el-table>
 <!--    <el-button type="primary" size="mini" @click="goToBusiDeal()">-->
 <!--      保全受理-->

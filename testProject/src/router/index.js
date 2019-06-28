@@ -8,12 +8,15 @@ import cardAndUsersAdd from '@/views/cardAndUsersManage/cardAndUsersAdd'
 import posQuery from '@/views/posManage/posQuery'
 import posAdd from '@/views/posManage/posAdd'
 import bankQuery from '@/views/bankManage/bankQuery'
+import bankAdd from '@/views/bankManage/bankAdd'
 import ruleQuery from '@/views/ruleManage/ruleQuery'
 import ruleAdd from '@/views/ruleManage/ruleAdd'
+import baseDataAdd from '@/views/ruleManage/baseDataAdd'
 import dailyFinancialQuery from '@/views/dailyFinancialManage/dailyFinancialQuery'
 import clientRepaymentQuery from '@/views/clientRepayment/clientRepaymentQuery'
 import dailyOperationQuery from '@/views/dailyOperation/dailyOperationQuery'
 import dailyOperationUpdate from '@/views/dailyOperation/dailyOperationUpdate'
+import clientRepaymentAdd from '@/views/clientRepayment/clientRepaymentAdd'
 
 Vue.use(Router)
 let routes = [
@@ -70,6 +73,45 @@ let routes = [
     ]
   },
   {
+    path: '/dailyOperation',
+    name: '日常操作',
+    component: Main,
+    children: [
+      {
+        path: '/dailyOperationQuery',
+        component: dailyOperationQuery,
+        name: '操作清单生成'
+      },
+      {
+        path: '/dailyOperationUpdate',
+        component: dailyOperationUpdate,
+        name: '操作清单确认'
+      },
+      {
+        path: '/dailyFinancialQuery ',
+        component: dailyFinancialQuery,
+        name: '日常财务录入'
+      }
+    ]
+  },
+  {
+    path: '/clientRepayment',
+    name: '客户还款',
+    component: Main,
+    children: [
+      {
+        path: '/clientRepaymentQuery',
+        component: clientRepaymentQuery,
+        name: '客户还款查询'
+      },
+      {
+        path: '/clientRepaymentAdd',
+        component: clientRepaymentAdd,
+        name: '客户还款录入'
+      }
+    ]
+  },
+  {
     path: '/bankManage',
     name: '本方银行',
     component: Main,
@@ -78,12 +120,17 @@ let routes = [
         path: '/bankQuery',
         component: bankQuery,
         name: '本方银行查询'
+      },
+      {
+        path: '/bankAdd',
+        component: bankAdd,
+        name: '本方银行录入'
       }
     ]
   },
   {
     path: '/ruleManage',
-    name: '规则配置',
+    name: '基础数据配置',
     component: Main,
     children: [
       {
@@ -95,59 +142,11 @@ let routes = [
         path: '/ruleQuery',
         component: ruleQuery,
         name: '规则查询'
-      }
-    ]
-  },
-  {
-    path: '/dailyFinancialManage',
-    name: '日常财务操作',
-    component: Main,
-    children: [
-      {
-        path: '/dailyFinancialQuery ',
-        component: dailyFinancialQuery,
-        name: '日常财务操作查询'
-      }
-    ]
-  },
-  {
-    path: '/dailyOperation',
-    name: '日常操作',
-    component: Main,
-    children: [
-      {
-        path: '/dailyOperationQuery',
-        component: dailyOperationQuery,
-        name: '日常操作查询'
       },
       {
-        path: '/dailyOperationUpdate',
-        component: dailyOperationUpdate,
-        name: '日常操作修改'
-      }
-    ]
-  },
-  {
-    path: '/perservationManage',
-    name: '客户还款记录',
-    component: Main,
-    children: [
-      {
-        path: '/contract',
-        component: cardAndUsersQuery,
-        name: '客户还款记录'
-      }
-    ]
-  },
-  {
-    path: '/clientRepayment',
-    name: '客户还款查询',
-    component: Main,
-    children: [
-      {
-        path: '/clientRepaymentQuery',
-        component: clientRepaymentQuery,
-        name: '客户还款查询'
+        path: '/baseDataAdd',
+        component: baseDataAdd,
+        name: '基础数据配置'
       }
     ]
   }
