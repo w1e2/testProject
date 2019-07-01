@@ -20,73 +20,65 @@
             </el-form-item>
           </el-col>
           <el-col :span="7" :offset="1">
-            <el-form-item  label="本方银行编码" size="small" :required="true" prop="bankCode">
-              <el-select v-model="formData.bankCode" placeholder="请选择" @change="checkType()">
-                <el-option
-                  v-for="item in bankOption"
-                  :key="item.code"
-                  :label="item.codeName"
-                  :value="item.code">
-                  <span>{{ item.code }}</span> - <span>{{ item.codeName }}</span>
-                </el-option>
-              </el-select>
-            </el-form-item>
-          </el-col>
-        </el-row>
-        <el-row type="flex" class="row-bg">
-          <el-col :span="7">
             <el-form-item  label="收款平台" size="small" :required="true" prop="platForm">
               <el-input v-model="formData.platForm" maxlength="15" placeholder="请输入收款平台" size='small'></el-input>
             </el-form-item>
           </el-col>
-          <el-col :span="7" :offset="1">
-            <el-form-item  label="最小收款金额" size="small" :required="true" prop="minAmount">
-              <el-input v-model="formData.minAmount" maxlength="15" placeholder="请输入金额" size='small'></el-input>
-            </el-form-item>
-          </el-col>
-          <el-col :span="7" :offset="1">
-            <el-form-item  label="最大收款金额" size="small" :required="true" prop="maxAmount">
-              <el-input v-model="formData.maxAmount" maxlength="15" placeholder="请输入金额" size='small'></el-input>
-            </el-form-item>
-          </el-col>
         </el-row>
-        <el-row type="flex" class="row-bg">
-          <el-col :span="7">
-            <el-form-item  label="闪付收费比率" size="small" prop="flashRatio" :required="true">
-              <el-input v-model="formData.flashRatio" placeholder="请输入1-100整数" size='small'></el-input>
-            </el-form-item>
-          </el-col>
-          <el-col :span="7" :offset="1">
-            <el-form-item  label="Pay收费比率" size="small" prop="payRatio" :required="true">
-              <el-input v-model="formData.payRatio" placeholder="请输入1-100整数" size='small'></el-input>
-            </el-form-item>
-          </el-col>
-          <el-col :span="7" :offset="1">
-            <el-form-item  label="红卡收费比率" size="small" prop="redRatio" :required="true">
-              <el-input v-model="formData.redRatio" placeholder="请输入1-100整数" size='small'></el-input>
-            </el-form-item>
-          </el-col>
-        </el-row>
-        <el-row type="flex" class="row-bg">
-          <el-col :span="7">
-            <el-form-item  label="正常收费比率" size="small" :required="true" prop="posRatio">
-              <el-input v-model="formData.posRatio" maxlength="15" placeholder="请输入1-100整数" size='small'></el-input>
-            </el-form-item>
-          </el-col>
-          <el-col :span="7" :offset="1">
-            <el-form-item  label="状态" size="small" :required="true" prop="posState">
-              <el-select v-model="formData.posState" placeholder="请选择" @change="checkType()">
-                <el-option
-                  v-for="item in stateOption"
-                  :key="item.code"
-                  :label="item.codeName"
-                  :value="item.code">
-                  <span>{{ item.code }}</span> - <span>{{ item.codeName }}</span>
-                </el-option>
-              </el-select>
-            </el-form-item>
-          </el-col>
-        </el-row>
+<!--        <el-row type="flex" class="row-bg">-->
+<!--          <el-col :span="7">-->
+<!--            <el-form-item  label="收款平台" size="small" :required="true" prop="platForm">-->
+<!--              <el-input v-model="formData.platForm" maxlength="15" placeholder="请输入收款平台" size='small'></el-input>-->
+<!--            </el-form-item>-->
+<!--          </el-col>-->
+<!--          <el-col :span="7" :offset="1">-->
+<!--            <el-form-item  label="最小收款金额" size="small" :required="true" prop="minAmount">-->
+<!--              <el-input v-model="formData.minAmount" maxlength="15" placeholder="请输入金额" size='small'></el-input>-->
+<!--            </el-form-item>-->
+<!--          </el-col>-->
+<!--          <el-col :span="7" :offset="1">-->
+<!--            <el-form-item  label="最大收款金额" size="small" :required="true" prop="maxAmount">-->
+<!--              <el-input v-model="formData.maxAmount" maxlength="15" placeholder="请输入金额" size='small'></el-input>-->
+<!--            </el-form-item>-->
+<!--          </el-col>-->
+<!--        </el-row>-->
+<!--        <el-row type="flex" class="row-bg">-->
+<!--          <el-col :span="7">-->
+<!--            <el-form-item  label="闪付收费比率" size="small" prop="flashRatio" :required="true">-->
+<!--              <el-input v-model="formData.flashRatio" placeholder="请输入1-100整数" size='small'></el-input>-->
+<!--            </el-form-item>-->
+<!--          </el-col>-->
+<!--          <el-col :span="7" :offset="1">-->
+<!--            <el-form-item  label="Pay收费比率" size="small" prop="payRatio" :required="true">-->
+<!--              <el-input v-model="formData.payRatio" placeholder="请输入1-100整数" size='small'></el-input>-->
+<!--            </el-form-item>-->
+<!--          </el-col>-->
+<!--          <el-col :span="7" :offset="1">-->
+<!--            <el-form-item  label="红卡收费比率" size="small" prop="redRatio" :required="true">-->
+<!--              <el-input v-model="formData.redRatio" placeholder="请输入1-100整数" size='small'></el-input>-->
+<!--            </el-form-item>-->
+<!--          </el-col>-->
+<!--        </el-row>-->
+<!--        <el-row type="flex" class="row-bg">-->
+<!--          <el-col :span="7">-->
+<!--            <el-form-item  label="正常收费比率" size="small" :required="true" prop="posRatio">-->
+<!--              <el-input v-model="formData.posRatio" maxlength="15" placeholder="请输入1-100整数" size='small'></el-input>-->
+<!--            </el-form-item>-->
+<!--          </el-col>-->
+<!--          <el-col :span="7" :offset="1">-->
+<!--            <el-form-item  label="状态" size="small" :required="true" prop="posState">-->
+<!--              <el-select v-model="formData.posState" placeholder="请选择" @change="checkType()">-->
+<!--                <el-option-->
+<!--                  v-for="item in stateOption"-->
+<!--                  :key="item.code"-->
+<!--                  :label="item.codeName"-->
+<!--                  :value="item.code">-->
+<!--                  <span>{{ item.code }}</span> - <span>{{ item.codeName }}</span>-->
+<!--                </el-option>-->
+<!--              </el-select>-->
+<!--            </el-form-item>-->
+<!--          </el-col>-->
+<!--        </el-row>-->
       </el-form>
       <p class='content-tit'>
         <span @click="isShow('isShowSales')" v-if='isShowSales'>-</span>

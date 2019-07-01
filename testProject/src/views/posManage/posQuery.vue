@@ -21,7 +21,7 @@
       </el-col>
     </el-row>
     <div class="ali-right">
-      <el-button type="primary" size="small" @click="queryClick('formDatas')">查询</el-button>
+      <el-button type="primary" size="small" @click="queryClick('formData')">查询</el-button>
     </div>
   </el-form>
     <p class="content-tit">
@@ -55,6 +55,7 @@
   </el-main>
 </template>
 <script>
+  import { queryInit, queryInfo } from '@/api/posManage/posManage'
   export default {
     components: {
     },
@@ -80,6 +81,9 @@
         selfList: []
       };
     },
+    created() {
+      this.queryInit() // 初始化表格数据
+    },
     methods: {
       handleCommand(command) {
         this.$message('click on item ' + command);
@@ -96,7 +100,36 @@
         this[val] = !this[val];
       },
       // 查询按钮
-      queryClick() {
+      queryClick(formData) {
+        this.$refs[formData].validate((valid) => {
+          if (valid) {
+            const formData = { // 参数
+            }
+            return new Promise((resolve, reject) => {
+              queryInit(formData).then(res => {
+                console.log('初始化数据')
+                resolve()
+              }).catch(error => {
+                reject(error)
+              })
+            })
+          } else {
+            console.log('error submit!!');
+            return false;
+          }
+        });
+      },
+      queryInit() {
+        const formData = { // 参数
+        }
+        return new Promise((resolve, reject) => {
+          queryInfo(formData).then(res => {
+            console.log('查询按钮')
+            resolve()
+          }).catch(error => {
+            reject(error)
+          })
+        })
       }
     }
   }

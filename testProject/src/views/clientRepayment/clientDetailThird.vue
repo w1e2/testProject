@@ -1,34 +1,22 @@
 <template>
-  <!--  pos机信息查询页面-->
+  <!--  卡/用户信息查询页面-->
   <el-main>
     <p class='content-tit'>请输入查询条件:</p>
-    <el-form :model="formData" ref="formData" label-width="100px" class="demo-ruleForm" label-position="right">
+    <el-form :model="formData" ref="formData" :rules="rule" label-width="100px" class="demo-ruleForm" label-position="right">
       <el-row type="flex" class="row-bg">
         <el-col :span="7">
-          <el-form-item  label="户名" size="small">
-            <el-input v-model="formData.name" maxlength="15" placeholder="请输入姓名" size='small'></el-input>
+          <el-form-item  label="客户姓名" size="small" :required="true" prop="name">
+            <el-input v-model="formData.name" placeholder="请输入客户姓名" size='small'></el-input>
           </el-form-item>
         </el-col>
         <el-col :span="7" :offset="1">
-          <el-form-item  label="银行编码" size="small">
-            <el-input v-model="formData.telephone" maxlength="15" placeholder="请输入电话号码" size='small'></el-input>
-          </el-form-item>
-        </el-col>
-      </el-row>
-      <el-row type="flex" class="row-bg">
-        <el-col :span="7">
-          <el-form-item  label="账号" size="small">
-            <el-input v-model="formData.cardNum" maxlength="15" placeholder="请输入卡号" size='small'></el-input>
-          </el-form-item>
-        </el-col>
-        <el-col :span="7" :offset="1">
-          <el-form-item  label="金额" size="small">
-            <el-input v-model="formData.money" maxlength="15" placeholder="请输入卡号" size='small'></el-input>
+          <el-form-item  label="手机号" size="small" :required="true" prop="telephone">
+            <el-input v-model="formData.telephone" maxlength="15" placeholder="请输入客户手机号" size='small'></el-input>
           </el-form-item>
         </el-col>
       </el-row>
       <div class="ali-right">
-        <el-button type="primary" size="small" @click="queryClick('formDatas')">查询</el-button>
+        <el-button type="primary" size="small" @click="queryClick('formData')">查询</el-button>
       </div>
     </el-form>
     <p class="content-tit">
@@ -38,10 +26,17 @@
     </p>
     <el-table :data="selfList" style="width: 100%" class='table-common' :highlight-current-row="true" border>
       <el-table-column label="序号" type='index' width="60" align="center"></el-table-column>
-      <el-table-column prop="missionprop1" label="户名" min-width="15%" align="center"></el-table-column>
-      <el-table-column prop="missionprop2" label="银行编码" min-width="15%" align="center"></el-table-column>
-      <el-table-column prop="missionprop3" label="账号" min-width="15%" align="center"></el-table-column>
-      <el-table-column prop="missionprop4" label="金额" min-width="15%" align="center"></el-table-column>
+      <el-table-column prop="cardId" label="卡编码" min-width="15%" align="center"></el-table-column>
+      <el-table-column prop="settleMonth" label="结算月份" min-width="15%" align="center"></el-table-column>
+      <el-table-column prop="operType" label="操作类型" min-width="15%" align="center"></el-table-column>
+      <el-table-column prop="money" label="金额" min-width="15%" align="center"></el-table-column>
+      <el-table-column prop="makeDate" label="操作时间" min-width="15%" align="center"></el-table-column>
+      <el-table-column prop="operName" label="操作人" min-width="15%" align="center"></el-table-column>
+      <el-table-column label="操作" min-width="15%" align="center">
+        <el-button type="text" @click.native.prevent="queryDetail(scope.$index)" size="small">
+          点击
+        </el-button>
+      </el-table-column>
     </el-table>
     <div class="mar15 ali-right">
       <el-pagination
@@ -55,21 +50,18 @@
   </el-main>
 </template>
 <script>
-  import { queryInfo, queryInit } from '@/api/bankManage/bankManage'
+  import { queryInit, queryInfo } from '@/api/clientRepaymentManage/clientRepaymentManage'
   export default {
+    name: 'clientDetailThird',
     components: {
     },
     data() {
       return {
-        searchFlag: false, // 选择查询类型后显示查询条件
         queryOption: [{ code: '0', codeName: '持卡人' },{ code: '1', codeName: '送卡人' },{ code: '2', codeName: '信用卡' }], // 管理机构
         flag: true,
         formData: {
-          queryType: '', // 查询类型
-          name: '',// 姓名
-          telephone: "",// 电话号码
-          cardNum: "",// 卡号
-          money: '',// 金额
+          name: '',// 流水号
+          telephone: "",// 客户id
           pageNum:1
         },
         selfPage: {
@@ -94,21 +86,31 @@
         this.formData.pageNum = num;
         this.queryClick()
       },
+      queryDetail(index) {
+
+      },
       isShow(val) {
         this[val] = !this[val];
       },
       // 查询按钮
-      queryClick(fromData) {
-        const formData = { // 参数
-        }
-        return new Promise((resolve, reject) => {
-          queryInfo(formData).then(res => {
-            console.log('查询按钮')
-            resolve()
-          }).catch(error => {
-            reject(error)
-          })
-        })
+      queryClick(formData) {
+        this.$refs[formData].validate((valid) => {
+          if (valid) {
+            const formData = { // 参数
+            }
+            return new Promise((resolve, reject) => {
+              queryInfo(formData).then(res => {
+                console.log('初始化数据')
+                resolve()
+              }).catch(error => {
+                reject(error)
+              })
+            })
+          } else {
+            console.log('error submit!!');
+            return false;
+          }
+        });
       },
       queryInit() {
         const formData = { // 参数

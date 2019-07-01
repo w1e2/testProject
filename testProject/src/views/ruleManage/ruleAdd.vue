@@ -9,18 +9,18 @@
     <el-form :model="formData" ref="formData" label-width="100px" class="demo-ruleForm" label-position="right">
       <el-row type="flex" class="row-bg">
         <el-col :span="7">
-          <el-form-item  label="操作金额最小范围" size="small" :required="true" prop="name">
-            <el-input v-model="formData.name" maxlength="15" placeholder="请输入姓名" size='small'></el-input>
+          <el-form-item  label="操作金额最小范围" size="small" :required="true" prop="minAmount">
+            <el-input v-model="formData.minAmount" placeholder="请输入操作最小金额" size='small'></el-input>
           </el-form-item>
         </el-col>
         <el-col :span="7" :offset="1">
-          <el-form-item  label="操作的上限" size="small" :required="true" prop="telephone">
-            <el-input v-model="formData.telephone" maxlength="15" placeholder="请输入电话号码" size='small'></el-input>
+          <el-form-item  label="操作的上限" size="small" :required="true" prop="maxAmount">
+            <el-input v-model="formData.maxAmount" placeholder="请输入操作的上限" size='small'></el-input>
           </el-form-item>
         </el-col>
         <el-col :span="7" :offset="1">
           <el-form-item  label="是否为风险卡" size="small" :required="true" prop="sex">
-            <el-select v-model="formData.sex" placeholder="请选择" @change="checkType()">
+            <el-select v-model="formData.risk" placeholder="请选择" @change="checkType()">
               <el-option
                 v-for="item in sexOption"
                 :key="item.code"
@@ -35,89 +35,45 @@
       <el-row type="flex" class="row-bg">
         <el-col :span="7">
           <el-form-item  label="还款的天数" size="small" prop="sendDate" :required="true">
-            <el-input v-model="formData.sendDate" maxlength="15" placeholder="请选择时间" size='small'></el-input>
+            <el-input v-model="formData.sendDate" maxlength="15" placeholder="请输入还款天数" size='small'></el-input>
           </el-form-item>
         </el-col>
         <el-col :span="7" :offset="1">
-          <el-form-item  label="每次还款次数" size="small" prop="sendDate" :required="true">
-            <el-input v-model="formData.sendDate" maxlength="15" placeholder="请选择时间" size='small'></el-input>
+          <el-form-item  label="每天还款次数" size="small" prop="sendTime" :required="true">
+            <el-input v-model="formData.sendTime" maxlength="15" placeholder="请输入还款次数" size='small'></el-input>
           </el-form-item>
         </el-col>
       </el-row>
     </el-form>
-<!--    <p class="content-tit">-->
-<!--      <span @click="isShow('flags')" v-if='flags'>-</span>-->
-<!--      <span @click="isShow('flags')" v-else>+</span>-->
-<!--      送卡人信息-->
-<!--    </p>-->
-<!--    <el-form :model="formData" ref="formData" label-width="100px" class="demo-ruleForm" label-position="right">-->
-<!--      <el-row type="flex" class="row-bg">-->
-<!--        <el-col :span="8">-->
-<!--          <el-form-item  label="姓名" size="small" :required="true" prop="sendName">-->
-<!--            <el-input v-model="formData.sendName" maxlength="15" placeholder="请输入姓名" size='small'></el-input>-->
-<!--          </el-form-item>-->
-<!--        </el-col>-->
-<!--        <el-col :span="8">-->
-<!--          <el-form-item  label="电话号码" size="small" :required="true" prop="sendTelephone">-->
-<!--            <el-input v-model="formData.sendTelephone" maxlength="15" placeholder="请输入电话号码" size='small'></el-input>-->
-<!--          </el-form-item>-->
-<!--        </el-col>-->
-<!--        <el-col :span="8">-->
-<!--          <el-form-item  label="性别" size="small" :required="true" prop="sendSex">-->
-<!--            <el-select v-model="formData.sendSex" placeholder="请选择">-->
-<!--              <el-option-->
-<!--                v-for="item in sexOption"-->
-<!--                :key="item.code"-->
-<!--                :label="item.codeName"-->
-<!--                :value="item.code">-->
-<!--                <span>{{ item.code }}</span> - <span>{{ item.codeName }}</span>-->
-<!--              </el-option>-->
-<!--            </el-select>-->
-<!--          </el-form-item>-->
-<!--        </el-col>-->
-<!--      </el-row>-->
-<!--      <el-row type="flex" class="row-bg">-->
-<!--        <el-col :span="8">-->
-<!--          <el-form-item  label="送卡时间" size="small" prop="sendDate" :required="true">-->
-<!--            <el-input v-model="formData.sendDate" maxlength="15" placeholder="请选择时间" size='small'></el-input>-->
-<!--          </el-form-item>-->
-<!--        </el-col>-->
-
-<!--      </el-row>-->
-<!--    </el-form>-->
-<!--    <p class="content-tit">-->
-<!--      <span @click="isShow('cardFlag')" v-if='cardFlag'>-</span>-->
-<!--      <span @click="isShow('cardFlag')" v-else>+</span>-->
-<!--      信用卡信息-->
-<!--    </p>-->
-<!--    <el-form :model="formData" ref="formData" label-width="100px" class="demo-ruleForm" label-position="right">-->
-<!--      <el-row type="flex" class="row-bg">-->
-<!--        <el-col :span="8">-->
-<!--          <el-form-item  label="卡号" size="small" :required="true" prop="cardID">-->
-<!--            <el-input v-model="formData.cardID" maxlength="15" placeholder="请输入姓名" size='small'></el-input>-->
-<!--          </el-form-item>-->
-<!--        </el-col>-->
-<!--        <el-col :span="8">-->
-<!--          <el-form-item  label="所属银行" size="small" :required="true" prop="bankName">-->
-<!--            <el-select v-model="formData.bankName" placeholder="请选择" @change="checkType()">-->
-<!--              <el-option-->
-<!--                v-for="item in bankOption"-->
-<!--                :key="item.code"-->
-<!--                :label="item.codeName"-->
-<!--                :value="item.code">-->
-<!--                <span>{{ item.code }}</span> - <span>{{ item.codeName }}</span>-->
-<!--              </el-option>-->
-<!--            </el-select>-->
-<!--          </el-form-item>-->
-<!--        </el-col>-->
-<!--      </el-row>-->
-<!--    </el-form>-->
     <div class="ali-right">
       <el-button type="primary" size="small" @click="addClick('formDatas')">录入</el-button>
+    </div>
+    <p class="content-tit">
+      <span @click="isShow('flag')" v-if='flag'>-</span>
+      <span @click="isShow('flag')" v-else>+</span>
+      查询结果
+    </p>
+    <el-table :data="selfList" style="width: 100%" class='table-common' :highlight-current-row="true" border>
+      <el-table-column label="序号" type='index' width="60" align="center"></el-table-column>
+      <el-table-column prop="missionprop1" label="操作金额最小范围" min-width="15%" align="center"></el-table-column>
+      <el-table-column prop="missionprop2" label="操作的上限" min-width="15%" align="center"></el-table-column>
+      <el-table-column prop="missionprop1" label="是否为风险卡" min-width="15%" align="center"></el-table-column>
+      <el-table-column prop="missionprop2" label="还款的天数" min-width="15%" align="center"></el-table-column>
+      <el-table-column prop="missionprop1" label="每次还款次数" min-width="15%" align="center"></el-table-column>
+    </el-table>
+    <div class="mar15 ali-right">
+      <el-pagination
+        @current-change="handleCurrentChangeSingle"
+        :current-page="selfPage.currentPage"
+        :page-size="selfPage.perPage"
+        layout="total, prev, pager, next, jumper"
+        :total="selfPage.totalSize">
+      </el-pagination>
     </div>
   </el-main>
 </template>
 <script>
+  import { ruleAddInfo, queryInitInfo } from '@/api/ruleManage/ruleManage'
   export default {
     components: {
     },
@@ -129,28 +85,28 @@
         flags: true,
         cardFlag: true,
         bankOption: [],
+        selfPage: {
+          currentPage: 1,
+          hasMore: true,
+          perPage: 10,
+          totalPage: 0,
+          totalSize: 0
+        },
+        selfList: [],
         formData: {
-          name: '',// 姓名
-          telephone: "",// 电话号码
-          sex: '', // 性别
-          sendDate: '', // 送卡时间
-          sendName: '',// 姓名
-          sendTelephone: "",// 电话号码
-          sendSex: '', // 性别
-          cardID: '',
-          bankName: '',
+          minAmount: '',// 姓名
+          maxAmount: "",// 电话号码
+          risk: '', // 风险卡
+          sendDate: '',
+          sendTime: '',
           pageNum:1
         }
       };
     },
+    created() {
+      this.queryInit() // 初始化表格数据
+    },
     methods: {
-      handleCommand(command) {
-        this.$message('click on item ' + command);
-      },
-      checkType: function () {
-        this.searchFlag = true
-        console.log(this.formData.queryType, "dddddddddddddddddd");
-      },
       handleCurrentChangeSingle(num) {
         this.formData.pageNum = num;
         this.queryClick()
@@ -160,6 +116,35 @@
       },
       // 录入按钮
       addClick() {
+        this.$refs[formData].validate((valid) => {
+          if (valid) {
+            const formData = { // 参数
+            }
+            return new Promise((resolve, reject) => {
+              ruleAddInfo(formData).then(res => {
+                console.log('添加数据')
+                resolve()
+              }).catch(error => {
+                reject(error)
+              })
+            })
+          } else {
+            console.log('error submit!!');
+            return false;
+          }
+        });
+      },
+      queryInit() {
+        const formData = { // 参数
+        }
+        return new Promise((resolve, reject) => {
+          queryInitInfo(formData).then(res => {
+            console.log('初始化表格数据')
+            resolve()
+          }).catch(error => {
+            reject(error)
+          })
+        })
       }
     }
   }

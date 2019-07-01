@@ -1,22 +1,22 @@
 <template>
   <!--  卡/用户信息查询页面-->
   <el-main>
-    <p class='content-tit'>基础数据配置信息:</p>
+    <p class='content-tit'>请输入查询条件:</p>
     <el-form :model="formData" ref="formData" :rules="rule" label-width="100px" class="demo-ruleForm" label-position="right">
       <el-row type="flex" class="row-bg">
         <el-col :span="7">
-          <el-form-item  label="类型" size="small" :required="true" prop="type">
-            <el-input v-model="formData.type" maxlength="15" placeholder="请输入类型" size='small'></el-input>
+          <el-form-item  label="客户姓名" size="small" :required="true" prop="name">
+            <el-input v-model="formData.name" placeholder="请输入客户姓名" size='small'></el-input>
           </el-form-item>
         </el-col>
         <el-col :span="7" :offset="1">
-          <el-form-item  label="值" size="small" :required="true" prop="value">
-            <el-input v-model="formData.value" maxlength="15" placeholder="请输入值" size='small'></el-input>
+          <el-form-item  label="手机号" size="small" :required="true" prop="telephone">
+            <el-input v-model="formData.telephone" maxlength="15" placeholder="请输入客户手机号" size='small'></el-input>
           </el-form-item>
         </el-col>
       </el-row>
       <div class="ali-right">
-        <el-button type="primary" size="small" @click="queryClick('formData')">增加</el-button>
+        <el-button type="primary" size="small" @click="queryClick('formData')">查询</el-button>
       </div>
     </el-form>
     <p class="content-tit">
@@ -26,15 +26,23 @@
     </p>
     <el-table :data="selfList" style="width: 100%" class='table-common' :highlight-current-row="true" border>
       <el-table-column label="序号" type='index' width="60" align="center"></el-table-column>
-      <el-table-column prop="missionprop1" label="类型" min-width="15%" align="center"></el-table-column>
-      <el-table-column prop="missionprop2" label="值" min-width="15%" align="center"></el-table-column>
+      <el-table-column prop="sendCusName" label="送卡人姓名" min-width="15%" align="center"></el-table-column>
+      <el-table-column prop="sendPhone" label="持卡人姓名" min-width="15%" align="center"></el-table-column>
+      <el-table-column prop="holdCusName" label="银行名称" min-width="15%" align="center"></el-table-column>
+      <el-table-column prop="cardNum" label="卡号" min-width="15%" align="center"></el-table-column>
+      <el-table-column prop="settleMonth" label="结算月份" min-width="15%" align="center"></el-table-column>
+      <el-table-column prop="tolAmount" label="总金额" min-width="15%" align="center"></el-table-column>
+      <el-table-column prop="alreadySellte" label="已结算金额" min-width="15%" align="center"></el-table-column>
+      <el-table-column prop="notSellte" label="未结算金额" min-width="15%" align="center"></el-table-column>
+      <el-table-column label="操作" min-width="15%" align="center">
+        <el-button type="primary" size="small">
+          点击
+        </el-button>
+      </el-table-column>
     </el-table>
-    <!--    <el-button type="primary" size="mini" @click="goToBusiDeal()">-->
-    <!--      保全受理-->
-    <!--    </el-button>-->
-    <!--    <el-button type="primary" size="mini" @click="showNotePad()">-->
-    <!--      记事本查看-->
-    <!--    </el-button>-->
+    <el-button type="primary" @click.native.prevent="queryDetail()" size="small">
+      点击
+    </el-button>
     <div class="mar15 ali-right">
       <el-pagination
         @current-change="handleCurrentChangeSingle"
@@ -47,8 +55,9 @@
   </el-main>
 </template>
 <script>
-  import { queryInit, addInfo } from '@/api/ruleManage/ruleManage'
+  import { queryInit, queryInfo } from '@/api/clientRepaymentManage/clientRepaymentManage'
   export default {
+    name: 'clientDetailInfo',
     components: {
     },
     data() {
@@ -57,8 +66,8 @@
         queryOption: [{ code: '0', codeName: '持卡人' },{ code: '1', codeName: '送卡人' },{ code: '2', codeName: '信用卡' }], // 管理机构
         flag: true,
         formData: {
-          type: '', // 类型
-          value: '',// 值
+          name: '',// 流水号
+          telephone: "",// 客户id
           pageNum:1
         },
         selfPage: {
@@ -68,14 +77,7 @@
           totalPage: 0,
           totalSize: 0
         },
-        rule: {
-          "type":[
-            { required: true, message: '类型不能为空' }
-          ],
-          "value":[
-            { required: true, message: '值不能为空' }
-          ]
-        },
+        rule: {},
         selfList: []
       };
     },
@@ -83,22 +85,34 @@
       this.queryInit() // 初始化表格数据
     },
     methods: {
+      checkType: function () {
+        this.searchFlag = true
+        console.log(this.formData.queryType, "dddddddddddddddddd");
+      },
       handleCurrentChangeSingle(num) {
         this.formData.pageNum = num;
         this.queryClick()
       },
+      queryDetail() {
+        console.log('跳转')
+        this.$router.push({
+          path: '/clientDetailThird',
+          query: {
+          }
+        })
+      },
       isShow(val) {
         this[val] = !this[val];
       },
-      // 添加按钮
+      // 查询按钮
       queryClick(formData) {
         this.$refs[formData].validate((valid) => {
           if (valid) {
             const formData = { // 参数
             }
             return new Promise((resolve, reject) => {
-              addInfo(formData).then(res => {
-                console.log('添加数据')
+              queryInfo(formData).then(res => {
+                console.log('初始化数据')
                 resolve()
               }).catch(error => {
                 reject(error)

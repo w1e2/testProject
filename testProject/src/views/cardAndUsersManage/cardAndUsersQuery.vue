@@ -33,7 +33,7 @@
           </el-form-item>
         </el-col>
       </el-row>
-      <div class="ali-right" v-if="searchFlag">
+      <div class="ali-right">
         <el-button type="primary" size="small" @click="queryClick('formDatas')">查询</el-button>
       </div>
     </el-form>
@@ -57,12 +57,6 @@
       <el-table-column prop="missionprop2" label="卡状态" min-width="15%" align="center"></el-table-column>
       <el-table-column prop="missionprop2" label="收费比例" min-width="15%" align="center"></el-table-column>
     </el-table>
-<!--    <el-button type="primary" size="mini" @click="goToBusiDeal()">-->
-<!--      保全受理-->
-<!--    </el-button>-->
-<!--    <el-button type="primary" size="mini" @click="showNotePad()">-->
-<!--      记事本查看-->
-<!--    </el-button>-->
     <div class="mar15 ali-right">
       <el-pagination
         @current-change="handleCurrentChangeSingle"
@@ -75,6 +69,7 @@
   </el-main>
 </template>
 <script>
+  import { queryInit, initInfo } from "../../api/cardAndUserManage/cardAndUserManage";
   export default {
     components: {
     },
@@ -100,14 +95,10 @@
         selfList: []
       };
     },
+    created () {
+      this.queryInit() // 初始化表格数据
+    },
     methods: {
-      handleCommand(command) {
-        this.$message('click on item ' + command);
-      },
-      checkType: function () {
-        this.searchFlag = true
-        console.log(this.formData.queryType, "dddddddddddddddddd");
-      },
       handleCurrentChangeSingle(num) {
         this.formData.pageNum = num;
         this.queryClick()
@@ -117,6 +108,28 @@
       },
       // 查询按钮
       queryClick() {
+        const formData = { // 参数
+        }
+        return new Promise((resolve, reject) => {
+          queryInit(formData).then(res => {
+            console.log('查询按钮')
+            resolve()
+          }).catch(error => {
+            reject(error)
+          })
+        })
+      },
+      queryInit() {
+        const formData = { // 参数
+        }
+        return new Promise((resolve, reject) => {
+          initInfo(formData).then(res => {
+            console.log('初始化表格数据')
+            resolve()
+          }).catch(error => {
+            reject(error)
+          })
+        })
       }
     }
   }

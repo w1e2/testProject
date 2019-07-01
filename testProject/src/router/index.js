@@ -9,11 +9,12 @@ import posQuery from '@/views/posManage/posQuery'
 import posAdd from '@/views/posManage/posAdd'
 import bankQuery from '@/views/bankManage/bankQuery'
 import bankAdd from '@/views/bankManage/bankAdd'
-import ruleQuery from '@/views/ruleManage/ruleQuery'
 import ruleAdd from '@/views/ruleManage/ruleAdd'
 import baseDataAdd from '@/views/ruleManage/baseDataAdd'
 import dailyFinancialQuery from '@/views/dailyFinancialManage/dailyFinancialQuery'
 import clientRepaymentQuery from '@/views/clientRepayment/clientRepaymentQuery'
+import clientDetailInfo from '@/views/clientRepayment/clientDetailInfo'
+import clientDetailThird from '@/views/clientRepayment/clientDetailThird'
 import dailyOperationQuery from '@/views/dailyOperation/dailyOperationQuery'
 import dailyOperationUpdate from '@/views/dailyOperation/dailyOperationUpdate'
 import clientRepaymentAdd from '@/views/clientRepayment/clientRepaymentAdd'
@@ -108,6 +109,18 @@ let routes = [
         path: '/clientRepaymentAdd',
         component: clientRepaymentAdd,
         name: '客户还款录入'
+      },
+      {
+        path: '/clientDetailInfo',
+        component: () => import('@/views/clientRepayment/clientDetailInfo'),
+        name: '客户还款详情',
+        hidden: true
+      },
+      {
+        path: '/clientDetailThird',
+        component: clientDetailThird,
+        name: '客户还款详情页',
+        hidden: true
       }
     ]
   },
@@ -137,11 +150,6 @@ let routes = [
         path: '/ruleAdd',
         component: ruleAdd,
         name: '规则配置'
-      },
-      {
-        path: '/ruleQuery',
-        component: ruleQuery,
-        name: '规则查询'
       },
       {
         path: '/baseDataAdd',

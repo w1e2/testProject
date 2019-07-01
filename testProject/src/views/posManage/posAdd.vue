@@ -10,7 +10,9 @@
       <el-row type="flex" class="row-bg">
         <el-col :span="7">
           <el-form-item  label="合作人" size="small" :required="true" prop="name">
-            <el-input v-model="formData.name" maxlength="15" placeholder="请输入姓名" size='small' v-on:click.native.prevent="silkFun()"></el-input>
+            <el-input v-model="formData.name" maxlength="15" placeholder="请输入合作人" size='small'>
+              <i slot="prefix" class="el-input__icon el-icon-search" @click="silkFun()"></i>
+            </el-input>
           </el-form-item>
         </el-col>
         <el-col :span="7" :offset="1">
@@ -88,13 +90,14 @@
       </el-row>
     </el-form>
     <div class="ali-right">
-      <el-button type="primary" size="small" @click="addClick('formDatas')">录入</el-button>
+      <el-button type="primary" size="small" @click="addClick('formData')">录入</el-button>
     </div>
     <pos-query v-if="showQueryDialog" @silkFuna="silkFuna"></pos-query>
   </el-main>
 </template>
 <script>
   import posQuery from '@/components/posQuery'
+  import { addInfo } from '@/api/posManage/posManage'
   export default {
     components: {
       posQuery
@@ -157,9 +160,6 @@
       };
     },
     methods: {
-      handleCommand(command) {
-        this.$message('click on item ' + command);
-      },
       silkFun() { // 业务员编码事件
         this.showQueryDialog = true
       },
@@ -172,13 +172,30 @@
       },
       handleCurrentChangeSingle(num) {
         this.formData.pageNum = num;
-        this.queryClick()
+        this.addClick()
       },
       isShow(val) {
         this[val] = !this[val];
       },
       // 录入按钮
-      addClick() {
+      addClick(formData) {
+        this.$refs[formData].validate((valid) => {
+          if (valid) {
+            const formData = { // 参数
+            }
+            return new Promise((resolve, reject) => {
+              addInfo(formData).then(res => {
+                console.log('添加数据')
+                resolve()
+              }).catch(error => {
+                reject(error)
+              })
+            })
+          } else {
+            console.log('error submit!!');
+            return false;
+          }
+        });
       }
     }
   }

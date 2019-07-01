@@ -48,6 +48,7 @@
 </template>
 <script>
   import bankQuery from '@/components/bankQuery'
+  import { addInfo} from "../../api/bankManage/bankManage";
   export default {
     components: {
       bankQuery
@@ -100,7 +101,24 @@
         this[val] = !this[val];
       },
       // 录入按钮
-      addClick() {
+      addClick(formData) {
+        this.$refs[formData].validate((valid) => {
+          if (valid) {
+            const formData = { // 参数
+            }
+            return new Promise((resolve, reject) => {
+              addInfo(formData).then(res => {
+                console.log('添加数据')
+                resolve()
+              }).catch(error => {
+                reject(error)
+              })
+            })
+          } else {
+            console.log('error submit!!');
+            return false;
+          }
+        });
       }
     }
   }

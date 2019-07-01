@@ -10,7 +10,9 @@
       <el-row type="flex" class="row-bg">
         <el-col :span="6">
           <el-form-item  label="姓名" size="small" :required="true" prop="name">
-            <el-input v-model="formData.name" placeholder="请输入姓名" size='small' v-on:click.native.prevent="silkFun()"></el-input>
+            <el-input v-model="formData.name" placeholder="请输入姓名" size='small' >
+              <i slot="prefix" class="el-input__icon el-icon-search" @click="silkFun()"></i>
+            </el-input>
           </el-form-item>
         </el-col>
         <el-col :span="6">
@@ -39,7 +41,9 @@
       <el-row type="flex" class="row-bg">
         <el-col :span="6">
           <el-form-item  label="姓名" size="small" :required="true" prop="sendName">
-            <el-input v-model="formData.sendName" placeholder="请输入姓名" size='small' v-on:click.native.prevent="focusClick1()"></el-input>
+            <el-input v-model="formData.sendName" placeholder="请输入姓名" size='small'>
+              <i slot="prefix" class="el-input__icon el-icon-search" @click="silkFun()"></i>
+            </el-input>
           </el-form-item>
         </el-col>
         <el-col :span="6">
@@ -151,6 +155,7 @@
 <script>
   import salesmanCodind from '@/components/salesman-coding'
   import sendCardQuery from '@/components/sendCard-query'
+  import { addInfo } from '@/api/cardAndUserManage/cardAndUserManage'
   export default {
     components: {
       salesmanCodind,
@@ -245,11 +250,9 @@
         this.showQueryDialog = true
       },
       silkFuna(val) { // 业务员代码
-        // this.formData.salesmanCode = val.agentCode
         this.showQueryDialog = val.isShowPages
       },
       silkFunas(val) { // 业务员代码
-        // this.formDatas.salesmanCode = val.agentCode
         this.showQueryDialogs = val.isShowPages
       },
       focusClick1() {
@@ -259,7 +262,16 @@
       addClick(formData) {
         this.$refs[formData].validate((valid) => {
           if (valid) {
-            alert('submit!');
+            const formData = { // 参数
+            }
+            return new Promise((resolve, reject) => {
+              addInfo(formData).then(res => {
+                console.log('添加数据')
+                resolve()
+              }).catch(error => {
+                reject(error)
+              })
+            })
           } else {
             console.log('error submit!!');
             return false;
